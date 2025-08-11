@@ -1,6 +1,5 @@
 class Solution {
     public boolean reorderedPowerOf2(int n) {
-        if(n==1) return true;
         char[]sb=String.valueOf(n).toCharArray();
         Arrays.sort(sb);
         String s1=new String(sb);
