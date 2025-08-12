@@ -14,17 +14,18 @@
  * }
  */
 class Solution {
-    static int c=0;
+    static int c;
     public int countNodes(TreeNode root) {
         c=0;
+        if(root==null) return 0;
         fun(root);
         return c;
     }
-    
+
     public void fun(TreeNode root){
         if(root==null) return;
-        c++;
-        fun(root.left);
+        c=c+1;
         fun(root.right);
+        fun(root.left);
     }
 }
