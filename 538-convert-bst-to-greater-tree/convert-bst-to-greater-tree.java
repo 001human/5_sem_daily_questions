@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    static int sum;
+    int sum;
     public TreeNode convertBST(TreeNode root) {
         sum=0;
         fun(root);
