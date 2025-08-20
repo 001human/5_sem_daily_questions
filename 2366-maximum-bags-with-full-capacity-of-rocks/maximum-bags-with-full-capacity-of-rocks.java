@@ -7,8 +7,8 @@ class Solution {
         Arrays.sort(dif);
         int ans=0;
         for(int i=0;i<dif.length;i++){
-            if(dif[i]==0) ans++;
-            else if(dif[i]<=ex){
+            // if(dif[i]==0) ans++;
+            if(dif[i]<=ex){
                 ex-=dif[i];
                 ans++;
             }
