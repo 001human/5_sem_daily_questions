@@ -14,10 +14,20 @@ class Solution {
         }
         List<String>fin=new ArrayList<>();
         for(String key:map.keySet()){
-            if(map.get(key)==max) fin.add(key);
+            if(map.get(key)==max) {
+                if(fin.size()>=1){
+                    if(fin.get(0).compareTo(key)<0){
+                        fin.remove(0);
+                        fin.add(key);
+                    }
+                }
+                else fin.add(key);
+            }
+            
         }
-        PriorityQueue<String>pq=new PriorityQueue<>((a,b)->b.compareTo(a));
-        pq.addAll(fin);
-        return pq.poll();
+        return fin.get(0);
+        // PriorityQueue<String>pq=new PriorityQueue<>((a,b)->b.compareTo(a));
+        // pq.addAll(fin);
+        // return pq.poll();
     }
 }
