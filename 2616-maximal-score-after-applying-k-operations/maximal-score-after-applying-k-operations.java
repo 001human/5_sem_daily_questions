@@ -8,9 +8,9 @@ class Solution {
         while(k-->0){
             int x=pq.poll();
             ans+=x;
-            int a=x/3;
-            if(x%3!=0) a++;
-            pq.add(a);
+            // int a=x/3;
+            // if(x%3!=0) a++;
+            pq.add((int)Math.ceil(x/3.0));
         }
         return ans;
     }
