@@ -8,8 +8,8 @@ class Solution {
             map.put(arr[end],map.getOrDefault(arr[end],0)+1);
             while(map.get(arr[end])!=null && map.get(arr[end])==2){
                 ans=Math.min(ans,end-start+1);
-                if(map.get(arr[start])==0) map.remove(arr[start]);
                 map.put(arr[start],map.get(arr[start])-1);
+                if(map.get(arr[start])==0) map.remove(arr[start]);
                 start++;
             }
             end++;
