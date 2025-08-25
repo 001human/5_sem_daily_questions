@@ -8,17 +8,18 @@ class Solution {
             //left and riight row same col change
             //up and down col same row change
             for(int j=i;j<s.length();j++){
-                if(s.charAt(j)=='R'){
+                char ch=s.charAt(j);
+                if(ch=='R'){
                     c++;
                     if(c<n) store++;
                     else break;
                 }
-                else if(s.charAt(j)=='L'){
+                else if(ch=='L'){
                     c--;
                     if(c>=0) store++;
                     else break;
                 }
-                else if(s.charAt(j)=='D'){
+                else if(ch=='D'){
                     r++;
                     if(r<n) store++;
                     else break;
