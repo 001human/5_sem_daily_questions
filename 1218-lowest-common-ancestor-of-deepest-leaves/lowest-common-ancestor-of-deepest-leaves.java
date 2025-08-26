@@ -14,25 +14,23 @@
  * }
  */
 class Solution {
+    int max=0;
+    TreeNode ans=null;
     public TreeNode lcaDeepestLeaves(TreeNode root) {
-        int h=height(root);
-        TreeNode ans=fun(root,h);
+        fun(root,0);
         return ans;
     }
 
-    public int height(TreeNode root){
-        if(root==null) return -1;
-        return Math.max(height(root.left),height(root.right))+1;
-    }
-
-    public TreeNode fun(TreeNode root,int h){
-        if(root==null) return null;
-        if(h==0) return root;
-        TreeNode left=fun(root.left,h-1);
-        TreeNode right=fun(root.right,h-1);
-        if(left!=null && right!=null) return root;
-        if(left==null) return right;
-        else return left;
-        
+    public int fun(TreeNode root,int cur){
+        if(root==null){
+            max=Math.max(max,cur);
+            return cur;
+        }
+        int left=fun(root.left,cur+1);
+        int right=fun(root.right,cur+1);
+        if(left==max && right==max){
+            ans=root;
+        }
+        return Math.max(left,right);
     }
 }
