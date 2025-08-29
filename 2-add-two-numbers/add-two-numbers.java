@@ -10,80 +10,60 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode temp1=l1;
-        ListNode temp2=l2;
-        String ss1="";
-        while(temp1!=null){
-            ss1=ss1+temp1.val;
-            temp1=temp1.next;
+        StringBuilder sb1=new StringBuilder();
+        StringBuilder sb2=new StringBuilder();
+        while(l1!=null){
+            sb1.append(l1.val);
+            l1=l1.next;
         }
-        
-        String ss2="";
-        while(temp2!=null){
-            ss2=ss2+temp2.val;
-            temp2=temp2.next;
+        while(l2!=null){
+            sb2.append(l2.val);
+            l2=l2.next;
         }
-
-        StringBuilder a1=new StringBuilder(ss1);
-        a1.reverse();
-        String s1=a1.toString();
-
-        StringBuilder a2=new StringBuilder(ss2);
-        a2.reverse();
-        String s2=a2.toString();
-
-        String ans="";
-        if(s1.length()<s2.length()){
-            ans=ans+add(s1,s2);
+        String s1=sb1.reverse().toString();
+        String s2=sb2.reverse().toString();
+        String s3="";
+        if(s1.length()>s2.length()){
+            s3=add(s1,s2);
         }
         else{
-           ans=ans + add(s2,s1);
+            s3=add(s2,s1);
         }
 
-        StringBuilder t=new StringBuilder(ans);
-        t.reverse();
-        String ans1=t.toString();
-
-        ListNode ad=new ListNode(0);
-        ListNode cur=ad;
-        int index=ans1.length()-1;
-        while(index>=0){
-            ListNode nn=new ListNode(ans1.charAt(index)-'0');
-            ad.next=nn;
-            ad=ad.next;
-            index--;
+        ListNode ans=new ListNode();
+        ListNode dummy=ans;
+        for(int i=0;i<s3.length();i++){
+            int x=s3.charAt(i)-'0';
+            ListNode nn=new ListNode();
+            nn.val=x;
+            ans.next=nn;
+            ans=ans.next;
         }
-
-        return cur.next;
-
+        return dummy.next;
     }
 
-    public static String add(String s1,String s2){
-        int ind1=s1.length()-1;
-        int ind2=s2.length()-1;
+    public String add(String s1,String s2){
         String ans="";
-        int sum=0;
+        int i1=s1.length()-1;
+        int i2=s2.length()-1;
         int carry=0;
-        while(ind1>=0){
-            int x=s1.charAt(ind1)-'0'+s2.charAt(ind2)-'0'+carry;
-            sum=x%10;
-            ans=ans+String.valueOf(sum);
-            carry=x/10;
-            ind1--;
-            ind2--;
+        while(i2>=0){
+            int sum=s1.charAt(i1)-'0'+s2.charAt(i2)-'0'+carry;
+            carry=sum/10;
+            sum=sum%10;
+            ans=ans+sum;
+            i1--;
+            i2--;
         }
 
-        while(ind2>=0){
-            int x=s2.charAt(ind2)-'0'+carry;
-            sum=x%10;
-            ans=ans+String.valueOf(sum);
-            carry=x/10;
-            ind2--;
+        while(i1>=0){
+            int sum=s1.charAt(i1)-'0'+carry;
+            carry=sum/10;
+            sum=sum%10;
+            ans=ans+sum;
+            i1--;
         }
-
-        if(carry!=0){
-            ans=ans+carry;
-        }        
+        if(carry!=0) ans=ans+carry;
         return ans;
     }
 }
