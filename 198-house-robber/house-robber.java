@@ -1,37 +1,16 @@
-//bottom to top
-
 class Solution {
     public int rob(int[] arr) {
-        int []dp=new int[arr.length];
+        int n=arr.length;
+        int[]dp=new int[n];
         Arrays.fill(dp,-1);
-        return fun(arr,arr.length-1,dp);
+        return fun(dp,arr,0);
     }
-        public int fun(int[]arr,int i,int[]dp){
-        if(i<0) return 0;
+    public int fun(int[]dp,int[]arr,int i){
+        if(i>=arr.length) return 0;
         if(dp[i]!=-1) return dp[i];
-        //rob and notrob
-        dp[i]=Math.max( arr[i]+fun(arr,i-2,dp), fun(arr,i-1,dp));
+        int rob=arr[i]+fun(dp,arr,i+2);
+        int norob=fun(dp,arr,i+1);
+        dp[i]=Math.max(rob,norob);
         return dp[i];
     }
-
 }
-
-
-
-//top to down
-
-// class Solution {
-//     public int rob(int[] arr) {
-//         int []dp=new int[arr.length];
-//         Arrays.fill(dp,-1);
-//         return fun(arr,0,dp);
-//     }
-
-//     public int fun(int[]arr,int i,int[]dp){
-//         if(i>=arr.length) return 0;
-//         if(dp[i]!=-1) return dp[i];
-//         //rob and notrob
-//         dp[i]=Math.max( arr[i]+fun(arr,i+2,dp), fun(arr,i+1,dp));
-//         return dp[i];
-//     }
-// }
