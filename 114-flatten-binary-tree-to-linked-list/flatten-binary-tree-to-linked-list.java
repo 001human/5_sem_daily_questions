@@ -18,17 +18,16 @@ class Solution {
         fun(root);
     }
 
-    public TreeNode fun(TreeNode root) {
+    public TreeNode fun(TreeNode root){
         if(root==null) return null;
         if(root.left==null && root.right==null) return root;
-        TreeNode left_tail=fun(root.left);
-        TreeNode right_tail=fun(root.right);
+        TreeNode leftt=fun(root.left);
+        TreeNode rightt=fun(root.right);
         if(root.left!=null){
-            left_tail.right=root.right;
+            leftt.right=root.right;
             root.right=root.left;
             root.left=null;
         }
-        return right_tail!=null ? right_tail : left_tail;
+        return rightt!=null?rightt : leftt;
     }
-
 }
