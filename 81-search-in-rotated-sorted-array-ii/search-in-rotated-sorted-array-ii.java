@@ -5,7 +5,7 @@ class Solution {
         while(start<end && arr[start]==arr[start+1]) start++;
         while(end>start && arr[end]==arr[end-1]) end--;
         while(start<=end){
-            int mid=end+(start-end)/2;
+            int mid=end+(start-end+1)/2;
             if(arr[mid]==target) return true;
             if(arr[mid]>arr[0]){//left sorted
 
