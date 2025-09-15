@@ -15,18 +15,12 @@ class Solution {
         return (int)(fun(even,5)*fun(odd,4)%mod);
     }
 
-    public long fun(long exp,long base){ //binary exponentiation
+    public long fun(long b,long a){ //binary exponentiation
         long ans=1;
-        while(exp>0){
-            if(exp%2==0){
-                base=(base*base)%mod;
-                exp=exp/2;
-            }
-            else{
-                ans=(ans*base)%mod;
-                exp-=1;
-            }
-        }
+        if(b==0) return 1;
+        long half=fun(b/2,a);
+        ans=(half*half)%mod;
+        if(b%2==1) ans=(ans*a)%mod;
         return ans;
     }
 }
