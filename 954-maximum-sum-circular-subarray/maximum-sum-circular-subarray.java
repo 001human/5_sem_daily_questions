@@ -4,14 +4,14 @@ class Solution {
         for(int i : arr){
             total += i;
         }
-        int max=Integer.MIN_VALUE;
+
         int n=arr.length;
-        int ans=Integer.MIN_VALUE;
+        int max=Integer.MIN_VALUE;
         int sum=0;
         //finding max
         for(int i=0;i<n;i++){
             sum+=arr[i];
-            ans=Math.max(ans,sum);
+            max=Math.max(max,sum);
             if(sum<0) sum=0;
         }
 
@@ -23,7 +23,7 @@ class Solution {
             minsum=Math.min(min,minsum);
             if(min>0) min=0;
         }
-       if(total - minsum == 0) return ans;
-        return Math.max(ans, total-minsum);
+       if(total - minsum == 0) return max;
+       return Math.max(max, total-minsum);
     }
 }
