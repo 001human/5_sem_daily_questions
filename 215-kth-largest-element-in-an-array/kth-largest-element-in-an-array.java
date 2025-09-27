@@ -5,10 +5,8 @@ class Solution {
             pq.add(arr[i]);
         }
         for(int i=k;i<arr.length;i++){
-            if(pq.peek()<arr[i]){
-                pq.poll();
-                pq.add(arr[i]);
-            }
+            pq.add(arr[i]);
+            pq.poll();
         }
         return pq.peek();
     }
