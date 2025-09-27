@@ -1,31 +1,40 @@
 class Solution {
-    public int firstMissingPositive(int[] arr1) {
-        Set<Integer>set=new HashSet<>();
-        for(int num:arr1){
-            set.add(num);
+    public int firstMissingPositive(int[] arr) {
+        //O(n) and O(1)
+        //first swap numbers to original positions
+    //     int n=arr.length;
+    //     for(int i=0;i<n;i++){
+    //         while(arr[i]>0 && arr[i]<=n && arr[i]!=i+1 ){
+    //             swap(i,arr[i]-1,arr);
+    //         }
+    //     }
+
+    //     for(int i=0;i<n;i++){
+    //         if(arr[i]!=i+1) return i+1;
+    //     }
+    //     return n+1;
+    // }
+
+    // public void swap(int i,int j,int[]arr){
+    //     int temp=arr[i];
+    //     arr[i]=arr[j];
+    //     arr[j]=temp;
+    // }
+        int n=arr.length;
+        boolean flag=false;
+        for(int i=0;i<n;i++){
+            if(arr[i]==1) flag=true;
+            if(arr[i]<=0 || arr[i]>n) arr[i]=1;
         }
-        int x=0;
-        int[]arr=new int[set.size()];
-        for(int num:set){
-            arr[x++]=num;
+        if(flag==false) return 1;
+        for(int i=0;i<n;i++){
+            int x=Math.abs(arr[i]);
+            if(arr[x-1]>0) arr[x-1]*=-1;
         }
-        Arrays.sort(arr);
-        int index=-1;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]<=0) index=i;
+        for(int i=0;i<n;i++){
+            if(arr[i]>0) return i+1;
         }
-        int a=1;
-        // if(index==-1) index=0;
-        int fl=0;
-        for(int i=index+1;i<arr.length;i++){
-            if(arr[i]==a) a++;
-            else return a;
-            fl=1;
-        }
-        if(fl==0) {
-            if(arr[0]==1) return 2;
-            return a;
-        }
-        return a;
+        return n+1;
     }
 }
+
