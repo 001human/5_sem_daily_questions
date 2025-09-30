@@ -1,9 +1,9 @@
 class Solution {
     public int smallestDivisor(int[] arr, int t) {
         int start=1;
-        int end=100000;
+        int end=0;
         for(int i=0;i<arr.length;i++){
-            start=Math.min(start,arr[i]);
+            // start=Math.min(start,arr[i]);
             end=Math.max(end,arr[i]);
         }
         int ans=0;
