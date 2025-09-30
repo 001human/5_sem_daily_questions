@@ -11,7 +11,7 @@ class Solution {
                 l++;
             }
             if((r-l+1)==p.length()){
-                String t=s.substring(l,l+(r-l+1));
+                String t=s.substring(l,l+p.length());
                 char[] arr = t.toCharArray();
                 Arrays.sort(arr);
                 String newsorted = new String(arr);
