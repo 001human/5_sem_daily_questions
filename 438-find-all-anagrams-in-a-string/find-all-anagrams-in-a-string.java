@@ -1,22 +1,40 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        int l=0;
-        int r=0;
-        char[] arr1 = p.toCharArray();
-        Arrays.sort(arr1);
-        String sorted = new String(arr1);
+        
+        int[]fre1=new int[26];
+        for(int i=0;i<p.length();i++){
+            fre1[p.charAt(i)-'a']++;
+        }
         List<Integer>ans=new ArrayList<>();
+        if(p.length()>s.length()) return ans;
+        int r=p.length();
+        int l=0;
+        int[]fre2=new int[26];
+        for(int i=0;i<p.length();i++){
+            fre2[s.charAt(i)-'a']++;
+        }
+
+        boolean fl=false;
+        for(int i=0;i<26;i++){
+            if(fre1[i]!=fre2[i]){
+                fl=true;
+                break;
+            }
+        }
+        if(fl==false) ans.add(l); 
         while(r<s.length()){
-            while((r-l+1)>p.length()){
-                l++;
+            char ch=s.charAt(r);
+            fre2[ch-'a']++;
+            fre2[s.charAt(l)-'a']--;
+            l++;
+            boolean flag=false;
+            for(int i=0;i<26;i++){
+            if(fre1[i]!=fre2[i]){
+                    flag=true;
+                    break;
+                }
             }
-            if((r-l+1)==p.length()){
-                String t=s.substring(l,l+p.length());
-                char[] arr = t.toCharArray();
-                Arrays.sort(arr);
-                String newsorted = new String(arr);
-                if(sorted.equals(newsorted)) ans.add(l);
-            }
+            if(flag==false) ans.add(l);
             r++;
         }
         return ans;
