@@ -6,13 +6,11 @@ class Solution {
         return ans;
     }
     public void fun(List<List<Integer>>ans, List<Integer>temp,int[]arr,int index){
-        if(index==arr.length){
-            ans.add(new ArrayList(temp));
-            return;
+        ans.add(new ArrayList<>(temp));
+        for(int i=index;i<arr.length;i++){
+            temp.add(arr[i]);
+            fun(ans,temp,arr,i+1);
+            temp.removeLast();
         }
-        temp.add(arr[index]);
-        fun(ans,temp,arr,index+1);
-        temp.removeLast();
-        fun(ans,temp,arr,index+1);
     }
 }
