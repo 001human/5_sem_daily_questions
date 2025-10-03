@@ -2,18 +2,17 @@ class Solution {
     public List<List<Integer>> subsets(int[] arr) {
         List<List<Integer>>ans=new ArrayList<>();
         List<Integer>temp=new ArrayList<>();
-        fun(arr,0,ans,temp);
+        fun(ans,temp,arr,0);
         return ans;
     }
-
-    public void fun(int[]arr,int i,List<List<Integer>>ans,List<Integer>temp){
-        if(i==arr.length){
+    public void fun(List<List<Integer>>ans, List<Integer>temp,int[]arr,int index){
+        if(index==arr.length){
             ans.add(new ArrayList(temp));
             return;
         }
-        temp.add(arr[i]);
-        fun(arr,i+1,ans,temp);
+        temp.add(arr[index]);
+        fun(ans,temp,arr,index+1);
         temp.removeLast();
-        fun(arr,i+1,ans,temp);
+        fun(ans,temp,arr,index+1);
     }
 }
