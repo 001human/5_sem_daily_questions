@@ -1,20 +1,22 @@
 class Solution {
-    public int change(int a, int[] coin) {
-        int[][]dp=new int[a+1][coin.length];
-        for(int[]ab:dp){
-            Arrays.fill(ab,-1);
+    public int change(int a, int[] arr) {
+        int[][]dp=new int[a+1][arr.length];
+        for(int []n:dp){
+            Arrays.fill(n,-1);
         }
-        return fun(a,coin,0,dp);
+        return fun(a,arr,0,dp);
     }
 
-    public int fun(int a, int[] coin,int i,int[][]dp){
-        if(a==0) return 1;
-        if(i>=coin.length) return 0;
-        if(dp[a][i]!=-1) return dp[a][i];
-        int inc=0;
+    public int fun(int a,int[]arr,int i,int[][]dp){
+        if(a==0) {
+            return 1;
+        }
         int ex=0;
-        if(a>=coin[i]) inc = fun(a-coin[i],coin,i,dp);
-        ex=fun(a,coin,i+1,dp);
-        return dp[a][i]=inc+ex;
+        int in=0;
+        if(i>=arr.length || a<0) return 0;
+        if(dp[a][i]!=-1) return dp[a][i];
+        if(a>=arr[i]) in=fun(a-arr[i],arr,i,dp);
+        ex=fun(a,arr,i+1,dp);
+        return dp[a][i]=ex+in;
     }
 }
