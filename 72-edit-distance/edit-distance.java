@@ -8,7 +8,7 @@ class Solution {    //2d dp as both i and j are changing
         if(i==w1.length()) return w2.length()-j;
         if(j==w2.length()) return w1.length()-i;
         if(dp[i][j]!=0) return dp[i][j];
-        //we can perform delte , insert and replace operations if character is not matched else move forward
+        //we can perform delte ,insert and replace operations if character is not matched else move forward
         int ans=0;
         if(w1.charAt(i)==w2.charAt(j)){
            ans=fun(w1,w2,i+1,j+1,dp);
