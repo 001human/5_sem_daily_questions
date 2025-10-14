@@ -15,9 +15,9 @@ class Solution {
         }
         if(pos>=len || pos<0 || c>step) return 0;
         if(dp[pos][c]!=-1) return dp[pos][c];
-        int a=fun(step,len,c+1,pos+1,dp)%mod;
-        int b=fun(step,len,c+1,pos-1,dp)%mod;
-        int z=fun(step,len,c+1,pos+0,dp)%mod;
+        int a=fun(step,len,c+1,pos+1,dp);
+        int b=fun(step,len,c+1,pos-1,dp);
+        int z=fun(step,len,c+1,pos+0,dp);
         return dp[pos][c]=(int)(((long)a+b+z)%mod);
     }
 }
