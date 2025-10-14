@@ -1,7 +1,7 @@
 class Solution {
     int mod=1000000007;
     public int numberOfWays(int start, int end, int k) {
-        int[][]dp=new int[4004][k+1];
+        int[][]dp=new int[3002][k+1];
         for(int[]ar:dp){
             Arrays.fill(ar,10001);
         }
