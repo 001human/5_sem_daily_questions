@@ -2,7 +2,7 @@ class Solution {
     int mod=1000000007;
     public int numWays(int steps, int len) {
         int x=Math.min(len,steps);
-        int[][]dp=new int[x+1][steps+1];
+        int[][]dp=new int[501][steps+1];
         for(int[]ar:dp){
             Arrays.fill(ar,-1);
         }
