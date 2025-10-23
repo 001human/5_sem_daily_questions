@@ -8,7 +8,6 @@ class Solution {
             }
             s=sb.toString();
         }
-        if(s.charAt(0)==s.charAt(1)) return true;
-        return false;
+        return (s.charAt(0)==s.charAt(1));
     }
 }
