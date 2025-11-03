@@ -1,12 +1,22 @@
 class Solution {
     public int maxUncrossedLines(int[] arr1, int[] arr2) {
-        int[][]dp=new int[arr1.length+1][arr2.length+1];
-        for(int i=1;i<=arr1.length;i++){
-            for(int j=1;j<=arr2.length;j++){
-                if(arr1[i-1]==arr2[j-1]) dp[i][j]=1+dp[i-1][j-1];
-                else dp[i][j]=Math.max(dp[i][j-1],dp[i-1][j]);
-            }
+        int[][]dp=new int[arr1.length][arr2.length];
+        for(int[]ar:dp){
+            Arrays.fill(ar,-1);
         }
-        return dp[arr1.length][arr2.length];
+        return fun(arr1,arr2,0,0,dp);
+    }
+
+     public int fun(int[] s1,int[] s2,int i,int j,int[][]dp){
+        if(i==s1.length || j==s2.length) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
+        int ans=0;
+        if(s1[i]==s2[j]){
+            ans=1+fun(s1,s2,i+1,j+1,dp);
+        }
+        else{
+            ans=ans+Math.max(fun(s1,s2,i+1,j,dp),fun(s1,s2,i,j+1,dp));
+        }
+        return dp[i][j]=ans;
     }
 }
