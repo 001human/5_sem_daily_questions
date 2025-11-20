@@ -1,24 +1,19 @@
 class Solution {
     public int minimumArea(int[][] arr) {
-        int n=arr.length;
-        int m=arr[0].length;
-        int minX=Integer.MAX_VALUE;
-        int minY=Integer.MAX_VALUE;
-        int maxX=0;
-        int maxY=0;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
+        int rmin=Integer.MAX_VALUE;
+        int rmax=-1;
+        int cmin=Integer.MAX_VALUE;
+        int cmax=-1;
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[0].length;j++){
                 if(arr[i][j]==1){
-                    minX=Math.min(minX,i);
-                    maxX=Math.max(maxX,i);
-                    minY=Math.min(minY,j);
-                    maxY=Math.max(maxY,j);
+                    rmin=Math.min(rmin,i);
+                    rmax=Math.max(rmax,i);
+                    cmax=Math.max(cmax,j);
+                    cmin=Math.min(cmin,j);
                 }
             }
         }
-        return (maxX-minX+1)*(maxY-minY+1);
+        return (rmax-rmin+1)*(cmax-cmin+1);
     }
 }
-
-
-
