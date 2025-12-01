@@ -14,8 +14,9 @@ class Solution {
         if(dp[i][pre]!=-1) return dp[i][pre];
         int in=0;
         int ex=0;
-        if(Math.abs((s.charAt(i)-'a')-pre)<=k || pre==26){
-            in=1+fun(s,k,i+1,s.charAt(i)-'a',dp);
+        int cur=(s.charAt(i)-'a');
+        if(Math.abs(cur-pre)<=k || pre==26){
+            in=1+fun(s,k,i+1,cur,dp);
         }
         ex=fun(s,k,i+1,pre,dp);
         return dp[i][pre]=Math.max(in,ex);
