@@ -17,20 +17,19 @@ class Solution {
         if(dp[i][j][d]!=-1) return dp[i][j][d];
         int right=0;
         int down=0;
-        int right1=0;
-        int down1=0;
+        
         if(arr[i][j]==0){
-            right=fun(arr,i+1,j,r,c,0,dp);
-            down=fun(arr,i,j+1,r,c,1,dp);
+            right+=fun(arr,i+1,j,r,c,0,dp);
+            down+=fun(arr,i,j+1,r,c,1,dp);
         }
         else {
             if(d==0){
-                down1=fun(arr,i,j+1,r,c,1,dp);
+                down+=fun(arr,i,j+1,r,c,1,dp);
             }
             else{
-                right1=fun(arr,i+1,j,r,c,0,dp);
+                right+=fun(arr,i+1,j,r,c,0,dp);
             }
         }
-        return dp[i][j][d]=(right+down+right1+down1)%1000000007;
+        return dp[i][j][d]=(right+down)%1000000007;
     }
 }
