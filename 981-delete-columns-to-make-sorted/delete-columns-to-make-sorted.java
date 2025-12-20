@@ -8,7 +8,6 @@ class Solution {
                 String st=arr[j];
                 temp=temp+st.charAt(i);
             }
-            System.out.println(temp);
             for(int j=1;j<temp.length();j++){
                 if((j-1)>=0 && temp.charAt(j-1)>temp.charAt(j)){
                     ans++;
