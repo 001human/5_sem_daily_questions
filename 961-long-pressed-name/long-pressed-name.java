@@ -13,9 +13,6 @@ class Solution {
             }
         }
         if(i==s1.length() ){
-            for(int k=j;k<s2.length();k++){
-                if(s2.charAt(k)!=s1.charAt(i-1)) return false;
-            }
             return true;
         }
         return false;
