@@ -13,7 +13,7 @@ class Solution {
         }
         return ans;
     }
-
+    
     public boolean pos(int []arr,long mid,int t){
         long ans=0;
         for(int i=0;i<arr.length;i++){
