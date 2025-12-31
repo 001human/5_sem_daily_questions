@@ -11,7 +11,7 @@ class Solution {
     }
 
     public boolean fun(List<List<Integer>> arr, int h,int i,int j,int[][]visit,int[][][]dp){
-        if(i>=arr.size() || i<0 || j<0 || j>=arr.get(0).size() || visit[i][j]==1) return false;
+        if(i>=arr.size() || i<0 || j<0 || j>=arr.get(0).size() || visit[i][j]==1 || h<1) return false;
         if(arr.get(i).get(j)==1) h--;
         if(h<1) return false;
         if(i==arr.size()-1 && j==arr.get(0).size()-1 ){
