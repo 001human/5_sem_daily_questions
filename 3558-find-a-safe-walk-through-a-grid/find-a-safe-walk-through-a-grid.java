@@ -19,14 +19,10 @@ class Solution {
         }
         if(dp[i][j][h]!=-1) return dp[i][j][h]==1;
         visit[i][j]=1;
-        boolean up;
-        boolean down;
-        boolean right;
-        boolean left;
-        up=fun(arr,h,i-1,j,visit,dp);
-        down=fun(arr,h,i+1,j,visit,dp);
-        right=fun(arr,h,i,j+1,visit,dp);
-        left=fun(arr,h,i,j-1,visit,dp);
+        boolean up=fun(arr,h,i-1,j,visit,dp);
+        boolean down=fun(arr,h,i+1,j,visit,dp);
+        boolean right=fun(arr,h,i,j+1,visit,dp);
+        boolean left=fun(arr,h,i,j-1,visit,dp);
         visit[i][j]=0;
         boolean r=up || down || right || left;
         dp[i][j][h]= r ? 1:0;
