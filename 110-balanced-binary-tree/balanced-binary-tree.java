@@ -13,25 +13,64 @@
  *     }
  * }
  */
+
+ // O(n)
 class Solution {
     public boolean isBalanced(TreeNode root) {
-        return fun(root).bal;
+        return balance(root).bal;
     }
 
-    public di fun(TreeNode root){
-        if(root==null) return new di();
-        di left=fun(root.left);
-        di right=fun(root.right);
-        di mid=new di();
-        mid.ht=Math.max(left.ht,right.ht)+1;
-        boolean check=Math.abs(left.ht-right.ht)<=1;
-        mid.bal=left.bal && right.bal && check;
-        return mid;
+    public diapair balance(TreeNode root){
+        if(root==null) return new diapair();
+        diapair ldp=balance(root.left);
+        diapair rdp=balance(root.right);
+        diapair sdp=new diapair();
+        sdp.ht=Math.max(ldp.ht,rdp.ht)+1;
+        boolean sbbal=Math.abs(ldp.ht-rdp.ht)<=1;
+        sdp.bal=sbbal && ldp.bal && rdp.bal;
+        return sdp; 
     }
 
-    class di{
-        int ht=-1;
+    class diapair{
         boolean bal=true;
+        int ht=-1;
     }
-
 }
+
+
+
+// O(n2)
+// class Solution {
+//     public boolean isBalanced(TreeNode root) {
+//         if(root==null) return true;
+//         boolean left=isBalanced(root.left);
+//         boolean right=isBalanced(root.right);
+//         if(Math.abs(height(root.left)-height(root.right))>1) return false;
+//         return left && right;
+//     }
+
+//     public int height(TreeNode root){
+//         if(root==null) return -1;
+//         int ld=height(root.left);
+//         int rd=height(root.right);
+//         return Math.max(ld,rd)+1;
+//     }
+// }
+
+
+// class Solution {
+//     public boolean isBalanced(TreeNode root) {
+//         if(root==null) return true;
+//         int left=height(root.left);
+//         int right=height(root.right);
+//         if(Math.abs(left-right)>1) return false;
+//         return isBalanced(root.left) && isBalanced(root.right);
+//     }
+
+//     public int height(TreeNode root){
+//         if(root==null) return -1;
+//         int ld=height(root.left);
+//         int rd=height(root.right);
+//         return Math.max(ld,rd)+1;
+//     }
+// }
