@@ -21,12 +21,12 @@ class Solution {
         st.add(root);
         while(!st.isEmpty()){
             TreeNode l=st.peek();
-            if(!st.isEmpty() && l.right!=null){
+            if(l.right!=null){
                 TreeNode temp=l.right;
                 l.right=null;
                 st.push(temp);
             } 
-            if(!st.isEmpty() && l.left!=null){
+            if(l.left!=null){
                 TreeNode temp=l.left;
                 l.left=null;
                 st.push(temp);
