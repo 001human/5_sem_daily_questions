@@ -13,64 +13,25 @@
  *     }
  * }
  */
-
- // O(n)
-class Solution {
-    public boolean isBalanced(TreeNode root) {
-        return balance(root).bal;
-    }
-
-    public diapair balance(TreeNode root){
-        if(root==null) return new diapair();
-        diapair ldp=balance(root.left);
-        diapair rdp=balance(root.right);
-        diapair sdp=new diapair();
-        sdp.ht=Math.max(ldp.ht,rdp.ht)+1;
-        boolean sbbal=Math.abs(ldp.ht-rdp.ht)<=1;
-        sdp.bal=sbbal && ldp.bal && rdp.bal;
-        return sdp; 
-    }
-
-    class diapair{
-        boolean bal=true;
-        int ht=-1;
-    }
+class Node{
+    int h=0;
+    boolean val=true;
 }
 
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return fun(root).val;
+    }
 
-
-// O(n2)
-// class Solution {
-//     public boolean isBalanced(TreeNode root) {
-//         if(root==null) return true;
-//         boolean left=isBalanced(root.left);
-//         boolean right=isBalanced(root.right);
-//         if(Math.abs(height(root.left)-height(root.right))>1) return false;
-//         return left && right;
-//     }
-
-//     public int height(TreeNode root){
-//         if(root==null) return -1;
-//         int ld=height(root.left);
-//         int rd=height(root.right);
-//         return Math.max(ld,rd)+1;
-//     }
-// }
-
-
-// class Solution {
-//     public boolean isBalanced(TreeNode root) {
-//         if(root==null) return true;
-//         int left=height(root.left);
-//         int right=height(root.right);
-//         if(Math.abs(left-right)>1) return false;
-//         return isBalanced(root.left) && isBalanced(root.right);
-//     }
-
-//     public int height(TreeNode root){
-//         if(root==null) return -1;
-//         int ld=height(root.left);
-//         int rd=height(root.right);
-//         return Math.max(ld,rd)+1;
-//     }
-// }
+    public Node fun(TreeNode root){
+       if(root==null) return new Node();
+       Node left=fun(root.left);
+       Node right=fun(root.right);
+       Node self=new Node();
+       int h1=Math.max(left.h,right.h);
+       if(Math.abs(left.h-right.h)>1) self.val=left.val & right.val & false;
+       else self.val=left.val & right.val;
+       self.h=h1+1;
+       return self;
+    }
+}
