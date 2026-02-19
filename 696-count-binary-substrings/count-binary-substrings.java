@@ -2,21 +2,25 @@ class Solution {
     public int countBinarySubstrings(String s) {
         int z=0;
         int o=0;
-        if(s.charAt(0)=='0') z++;
-        else o++;
-        int ans=0;
-        for(int i=1;i<s.length();i++){
-            if(s.charAt(i)==s.charAt(i-1)){
-                if(s.charAt(i)=='0') z++;
-                else o++;
+        List<Integer>ls=new ArrayList<>();
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if(ch=='0'){
+                if(o>0) ls.add(o);
+                o=0;
+                z++;
             }
-            else{
-                ans+=Math.min(o,z);
-                if(s.charAt(i)=='0') z=1;
-                else o=1;
+            else {
+                if(z>0) ls.add(z);
+                z=0;
+                o++;
             }
         }
-        ans+=Math.min(o,z);
+        ls.add(Math.max(o,z));
+        int ans=0;
+        for(int i=1;i<ls.size();i++){
+            ans+=Math.min(ls.get(i-1),ls.get(i));
+        }
         return ans;
     }
 }
