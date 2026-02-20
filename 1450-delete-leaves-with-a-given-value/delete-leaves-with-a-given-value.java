@@ -15,26 +15,14 @@
  */
 class Solution {
     public TreeNode removeLeafNodes(TreeNode root, int t) {
-        fun(root,t);
-        if(root.left==null && root.right==null && root.val==t) return null;
-        return root;
+        return fun(root,t);
     }
 
-    public void fun(TreeNode root,int t){
-        if(root==null) return;
-        fun(root.left,t);
-        if(root.left!=null) {
-            if(root.left.left==null && root.left.right==null && root.left.val==t){
-                root.left=null;
-            }
-        }
-
-        fun(root.right,t);
-        if(root.right!=null) {
-            if(root.right.left==null && root.right.right==null && root.right.val==t){
-                root.right=null;
-            }
-        }
-        
+    public TreeNode fun(TreeNode root,int t){
+        if(root==null) return null;
+        root.left=fun(root.left,t);
+        root.right=fun(root.right,t);
+        if(root.left==null && root.right==null && root.val==t) return null;
+        return root;
     }
 }
