@@ -22,8 +22,8 @@ class Solution {
         long ans=0;
         for(int i=0;i<arr.length;i++){
             long x=mid/arr[i];
-            long n = (long)((Math.sqrt(1 + 8*x) - 1) / 2);
-            ans+=n;
+            ans+= (long)((Math.sqrt(1 + 8*x) - 1) / 2);
+            //ans+=n;
         }
         return ans>=h;
     }
