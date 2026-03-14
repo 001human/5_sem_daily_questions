@@ -6,7 +6,7 @@ class Solution {
         //binary search
         Arrays.sort(arr);
         long start=1;
-        long end = (long)1e18;
+        long end = 1_000_000_000_000_000_0L; 
         long ans=Integer.MAX_VALUE;
         while(start<=end){
             long mid=start+(end-start)/2;
