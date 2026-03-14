@@ -4,7 +4,6 @@ class Solution {
         //2*(1+2+3+4)=20
         //3*(1+2)=9
         //binary search
-        Arrays.sort(arr);
         long start=1;
         long end = 1_000_000_000_000_000_0L; 
         long ans=Integer.MAX_VALUE;
