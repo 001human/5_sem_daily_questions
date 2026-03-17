@@ -1,9 +1,11 @@
 class Solution {
     public boolean isBipartite(int[][] arr) {
         //to find the bipartite graph we need to find a odd length cycle 
+        Queue<pair>q=new LinkedList<>();
+        HashMap<Integer,Integer>visited=new HashMap<>();
+
         for(int i=0;i<arr.length;i++){
-            Queue<pair>q=new LinkedList<>();
-            HashMap<Integer,Integer>visited=new HashMap<>();
+            if(visited.containsKey(i)) continue;
             q.add(new pair(i,0));
             while(!q.isEmpty()){
                 pair p=q.poll(); //remove
