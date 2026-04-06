@@ -13,8 +13,9 @@
  *     }
  * }
  */
+
 class Solution {
-    int sum;
+    static int sum;
     public TreeNode convertBST(TreeNode root) {
         sum=0;
         fun(root);
@@ -24,8 +25,8 @@ class Solution {
     public void fun(TreeNode root){
         if(root==null) return;
         fun(root.right);
-        root.val=root.val+sum;
-        sum=root.val;
+        sum+=root.val;
+        root.val=sum;   
         fun(root.left);
     }
 }
