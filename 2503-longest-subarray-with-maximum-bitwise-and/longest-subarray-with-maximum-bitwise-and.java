@@ -9,13 +9,9 @@ class Solution {
         int max_len=1;
         int cur=0;
         for(int i=0;i<arr.length;i++){
-            if(arr[i]==max){
-                cur++;
-                max_len=Math.max(max_len,cur);
-            }
-            else{
-                cur=0;
-            }
+            if(arr[i]==max) cur++;
+            else cur=0; 
+            max_len=Math.max(max_len,cur);
         }
         return max_len;
     }
