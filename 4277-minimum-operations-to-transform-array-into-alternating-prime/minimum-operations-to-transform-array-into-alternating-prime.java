@@ -1,7 +1,7 @@
 class Solution {
     public int minOperations(int[] arr) {
         int ans=0;
-        int n=200000;
+        int n=110000;
         boolean[]temp=new boolean[n+1];
        temp[0]=true;
        temp[1]=true;
@@ -30,7 +30,7 @@ class Solution {
         for(int i=n+1;i<arr.length;i++){
             if(arr[i]==false && i>n) return i;
         }
-        return 0;
+        return n;
     }
 
 
