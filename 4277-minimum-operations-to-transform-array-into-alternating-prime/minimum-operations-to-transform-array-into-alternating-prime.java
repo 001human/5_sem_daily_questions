@@ -3,9 +3,9 @@ class Solution {
         int ans=0;
         int n=110000;
         boolean[]temp=new boolean[n+1];
-       temp[0]=true;
-       temp[1]=true;
-        for(int i=2;i<n;i++){
+        temp[0]=true;
+        temp[1]=true;
+        for(int i=2;i*i<n;i++){
             if(temp[i]) continue;
             for(long j=(long)i*i;j<n;j+=i){
                 temp[(int)j]=true;
