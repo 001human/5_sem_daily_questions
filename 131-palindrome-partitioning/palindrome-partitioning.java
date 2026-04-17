@@ -5,13 +5,11 @@ class Solution {
         fun(ans,temp,s);
         return ans;
     }
-
-    public void fun(List<List<String>>ans,List<String>temp,String s){
+    public void fun(List<List<String>>ans, List<String>temp,String s){
         if(s.length()==0){
-            ans.add(new ArrayList(temp));
+            ans.add(new ArrayList<>(temp));
             return;
         }
-
         for(int i=1;i<=s.length();i++){
             String x=s.substring(0,i);
             if(pal(x)){
@@ -21,7 +19,6 @@ class Solution {
             }
         }
     }
-
     public boolean pal(String s){
         int start=0;
         int end=s.length()-1;
@@ -34,5 +31,4 @@ class Solution {
         }
         return true;
     }
-
 }
