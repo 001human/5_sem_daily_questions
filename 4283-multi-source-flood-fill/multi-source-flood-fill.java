@@ -2,7 +2,7 @@ class Solution {
     public int[][] colorGrid(int n, int m, int[][] sources) {
         Queue<int[]> q = new LinkedList<>();
         int[][]arr=new int[n][m];
-        Arrays.sort(sources, (p,y) -> y[2]-p[2]);
+        Arrays.sort(sources, (x,y) -> Integer.compare(y[2],x[2]));
         for(int[]s:sources){
             int i=s[0];
             int j=s[1];
