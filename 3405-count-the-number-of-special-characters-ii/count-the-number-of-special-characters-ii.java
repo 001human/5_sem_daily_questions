@@ -4,11 +4,7 @@ class Solution {
         int[]arr2=new int[26];
         for(int i=0;i<s.length();i++){
             char ch=s.charAt(i);
-            if(ch>='A' && ch<='Z'){
-                 arr2[ch-'A']++;
-                // else arr1[(char)(ch+32)-'a']=-1;
-            }
-
+            if(ch>='A' && ch<='Z') arr2[ch-'A']++;
             else{
                 if(arr2[(char)(ch-32)-'A']>0) arr1[ch-'a']=-1;
                 else arr1[ch-'a']++;
