@@ -4,7 +4,7 @@ class Solution {
         long m=mn;
         for(int i=0;i<arr.length;i++){
             if(m>=arr[i]) m+=arr[i];
-            else if(m>arr[arr.length-1]) return true;
+            // else if(m>arr[arr.length-1]) return true;
             else return false;
         }
         return true;
