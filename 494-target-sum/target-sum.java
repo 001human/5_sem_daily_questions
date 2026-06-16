@@ -1,19 +1,18 @@
 class Solution {
-    static int val=20000;
+    static int ans;
     public int findTargetSumWays(int[] arr, int t) {
-        int[][]dp=new int[arr.length+1][40001];
-        for(int[]a:dp){
-            Arrays.fill(a,Integer.MIN_VALUE);
-        }
-        return fun(arr,t,0,0,dp);
+        ans=0;
+        fun(arr,t,0);
+        return ans;
     }
 
-    public int fun(int[]arr,int t,int sum,int i,int[][]dp){
-        if(i==arr.length && sum==t){
-            return 1;
+    public void fun(int[]arr,int t,int i){
+        if(i==arr.length && t==0){
+            ans++;
+            return;
         }
-        if(i>=arr.length) return 0;
-        if(dp[i][sum+val]!=Integer.MIN_VALUE) return dp[i][sum+val];
-        return dp[i][sum+val] = fun(arr,t,sum+arr[i],i+1,dp) + fun(arr,t,sum-arr[i],i+1,dp);
+        if(i>=arr.length) return;
+        fun(arr,t+arr[i],i+1);
+        fun(arr,t-arr[i],i+1);
     }
 }
