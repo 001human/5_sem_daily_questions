@@ -1,31 +1,30 @@
 class Solution {
     public boolean findSafeWalk(List<List<Integer>> arr, int h) {
-        int[][]visit=new int[arr.size()][arr.get(0).size()];
-        int[][][]dp=new int[arr.size()][arr.get(0).size()][h+1];
-        for(int[][]a:dp){
-            for(int[]ar:a){
-                Arrays.fill(ar,-1);
-            }
-        }
+        int r=arr.size();
+        int c=arr.get(0).size();
+        int[][]visit=new int[r][c];
+        Boolean[][][]dp=new Boolean[r][c][h+1];
         return fun(arr,h,0,0,visit,dp);
     }
 
-    public boolean fun(List<List<Integer>> arr, int h,int i,int j,int[][]visit,int[][][]dp){
-        if(i>=arr.size() || i<0 || j<0 || j>=arr.get(0).size() || visit[i][j]==1) return false;
-        if(arr.get(i).get(j)==1) h--;
-        if(h<1) return false;
-        if(i==arr.size()-1 && j==arr.get(0).size()-1 ){
-            return true;
+    public boolean fun(List<List<Integer>> arr, int h,int r,int c,int[][]visit,Boolean[][][]dp){
+        if(r==arr.size()-1 && c==arr.get(0).size()-1){
+            if(arr.get(r).get(c)==1) h--;
+            if(h>=1) return true;
+            return false;
         }
-        if(dp[i][j][h]!=-1) return dp[i][j][h]==1;
-        visit[i][j]=1;
-        boolean up=fun(arr,h,i-1,j,visit,dp);
-        boolean down=fun(arr,h,i+1,j,visit,dp);
-        boolean right=fun(arr,h,i,j+1,visit,dp);
-        boolean left=fun(arr,h,i,j-1,visit,dp);
-        visit[i][j]=0;
-        boolean r=up || down || right || left;
-        dp[i][j][h]= r ? 1:0;
-        return r; 
+
+        if(r<0 || c<0 || r>=arr.size() || c>=arr.get(0).size() || visit[r][c]==1 ) return false; 
+        if(arr.get(r).get(c)==1) h--;
+        if(h<=0) return false;
+        if(dp[r][c][h]!=null) return dp[r][c][h];
+        
+        visit[r][c]=1;
+        boolean b1=fun(arr,h,r+1,c,visit,dp);
+        boolean b2=fun(arr,h,r-1,c,visit,dp);
+        boolean b3=fun(arr,h,r,c-1,visit,dp);
+        boolean b4=fun(arr,h,r,c+1,visit,dp);
+        visit[r][c]=0;
+        return dp[r][c][h] = b1 || b2 || b3 || b4;
     }
 }
