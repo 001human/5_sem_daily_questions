@@ -16,24 +16,25 @@
 class Solution {
     public int maxLevelSum(TreeNode root) {
         Queue<TreeNode>q=new LinkedList<>();
-        long sum=Integer.MIN_VALUE;
-        int ans=0;
         q.add(root);
-        int l=0;
+        int idx=1;
+        int ans=0;
+        int sum=Integer.MIN_VALUE;
         while(!q.isEmpty()){
             int s=q.size();
-            long t=0;
+            int temp=0;
             for(int i=0;i<s;i++){
-                TreeNode r=q.poll();
-                t+=r.val;
-                if(r.left!=null) q.add(r.left);
-                if(r.right!=null) q.add(r.right);
+                TreeNode p=q.poll();
+                temp+=p.val;
+                if(p.left!=null) q.add(p.left);
+                if(p.right!=null) q.add(p.right);
             }
-            l++;
-            if(t>sum){
-                sum=t;
-                ans=l;
+            if(temp>sum) {
+                ans=idx;
+                sum=temp;
             }
+            if(temp==sum) ans=Math.min(ans,idx);
+            idx++;
         }
         return ans;
     }
