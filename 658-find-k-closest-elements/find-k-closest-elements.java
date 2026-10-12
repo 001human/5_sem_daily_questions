@@ -10,16 +10,9 @@ class Solution {
                 }
                 break;
             }
-            else if(Math.abs(arr[start]-x)>Math.abs(arr[end]-x)) start++;
-            else if((Math.abs(arr[start]-x)<Math.abs(arr[end]-x))) end--;
-            else{
-                if(Math.abs(arr[start]-x)==Math.abs(arr[end]-x)){
-                    if(arr[start]<arr[end]) end--;
-                    else start++;
-                }
-            }
+            if((Math.abs(arr[start]-x)<=Math.abs(arr[end]-x))) end--;
+            else start++;
         }
-        Collections.sort(ans);
         return ans;
     }
 }
